@@ -1,0 +1,38 @@
+From a091020f65decc7f40d000e52733e3525645234c Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Fri, 21 Mar 2025 16:32:24 +0100
+Subject: [PATCH] Remove checks for compiler supporting C++11
+
+Reason: conda-forge compilers' toolchains
+are configured to use C++17 so C++11 is supported.
+
+This check is 9 years old at least, and the macro
+seem not to be defined when compiling with MSVC.
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ lmdb++.h | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/lmdb++.h b/lmdb++.h
+index 2a47160..76259b4 100644
+--- a/lmdb++.h
++++ b/lmdb++.h
+@@ -10,14 +10,6 @@
+  * @see https://sourceforge.net/projects/lmdbxx/
+  */
+ 
+-#ifndef __cplusplus
+-#error "<lmdb++.h> requires a C++ compiler"
+-#endif
+-
+-#if __cplusplus < 201103L
+-#error "<lmdb++.h> requires a C++11 compiler (CXXFLAGS='-std=c++11')"
+-#endif
+-
+ ////////////////////////////////////////////////////////////////////////////////
+ 
+ #include <lmdb.h>      /* for MDB_*, mdb_*() */
+-- 
+2.48.1
+
