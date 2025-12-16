@@ -12,7 +12,7 @@ source:
     - 0001-Remove-checks-for-compiler-supporting-C-11.patch
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
